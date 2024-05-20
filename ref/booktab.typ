@@ -9,10 +9,10 @@
   #h(0em, weak: true)
 ]
 
-#let booktab(columns: (), aligns: (), width: auto, caption: none, ..cells) = {
+#let booktab(columns: (), aligns: (), width: auto, caption: none, legend:none, ..cells) = {
   let headers = cells.pos().slice(0, columns.len())
   let contents = cells.pos().slice(columns.len(), cells.pos().len())
-  set align(center+horizon)
+  // show figure: set align(center + horizon)
 
   if aligns == () {
     for i in range(0, columns.len()) {
@@ -65,6 +65,8 @@
       ),
     ),
     caption: caption,
-    kind: table
+    kind: table,
+    supplement: [表],
+    numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i),
   )
 }

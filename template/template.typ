@@ -200,7 +200,8 @@
     set page(numbering: "I")
     // set par(leading: 12pt)
     heading(level: 1, numbering: none)[插图和附表清单]
-    outline(title:none, target: figure)
+    outline(title:none, target: figure.where(kind:image))
+    outline(title:none, target: figure.where(kind:table))
   }
 
   let acronymspage={
@@ -284,6 +285,7 @@
     set figure.caption(separator: [. ])
     show figure.where(supplement: [表]): set figure.caption(position: top)
     show figure.caption: set text(font:("Times New Roman","SimHei"), 9pt)
+    show figure.where(kind: image): set figure(numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i))
     show figure: it => {
       set text(font:("Times New Roman","SimSun"), 9pt)
       it

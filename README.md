@@ -117,18 +117,15 @@
         caption: [图片的标题],
     )<img1>
     
-    #figure(
-        booktab(
-            width:60%,
-            columns: (20%, 1fr, 2fr, 3fr),
-            [1], [2], [3], [4],
-            [a], [b], [c], [d],
-            [e], [f], [g], [h],
-            [i], [j], [k], [l]
-    ),
-    kind: table, 
-    supplement: [表],
-    caption: [这里填写表格名称],
+    #booktab(
+        width:60%,
+        columns: (20%, 1fr, 2fr, 3fr),
+        caption: [这里填写表格名称],
+        kind: table, 
+        [1], [2], [3], [4],
+        [a], [b], [c], [d],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l]
     )<tab1>
     ```
 

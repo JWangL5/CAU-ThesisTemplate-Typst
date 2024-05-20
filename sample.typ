@@ -165,18 +165,15 @@
         caption: [图片的标题],
     )<img1>
     
-    #figure(
-        booktab(
-            width:60%,
-            columns: (20%, 1fr, 2fr, 3fr),
-            [1], [2], [3], [4],
-            [a], [b], [c], [d],
-            [e], [f], [g], [h],
-            [i], [j], [k], [l]
-    ),
-    kind: table, 
-    supplement: [表],
-    caption: [这里填写表格名称],
+    #booktab(
+        width:60%,
+        columns: (20%, 1fr, 2fr, 3fr),
+        caption: [这里填写表格名称],
+        kind: table, 
+        [1], [2], [3], [4],
+        [a], [b], [c], [d],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l]
     )<tab1>
     ```]
     
@@ -188,19 +185,35 @@
         caption: [这里填写图片的标题],
     )<img1>
 
-    #figure(
-        booktab(
-            width:60%,
-            columns: (20%, 1fr, 2fr, 3fr),
-            [1], [2], [3], [4],
-            [a], [b], [c], [d],
-            [e], [f], [g], [h],
-            [i], [j], [k], [l]
-    ),
-    kind: table, 
-    supplement: [表],
-    caption: [这里填写表格名称],
+    #booktab(
+      width:60%,
+      columns: (20%, 1fr, 2fr, 3fr),
+      caption: [这里填写表格名称],
+      [1], [2], [3], [4],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
     )<tab1>
+
+    #booktab(
+      width:60%,
+      columns: (20%, 1fr, 2fr, 3fr),
+      [1], [2], [3], [4],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      caption: [这里填写表格名称],
+    )<tab2>
+
+    #booktab(
+      width:60%,
+      columns: (20%, 1fr, 2fr, 3fr),
+      [1], [2], [3], [4],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      caption: [这里填写表格名称],
+    )<tab3>
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
     #sourcecode[```typst
@@ -246,6 +259,23 @@
 #heading(level: 6, numbering: none, outlined: false)[]
 
 = 第二章 测试页
+
+    #figure(
+        rect(width: 100%, height: 8em, stroke: black, inset: 3em, fill: yellow)[#text(size: 3em)[假装这是一张图]], 
+        kind: image, 
+        supplement: [图],
+        caption: [这里填写图片的标题],
+    )<img2>
+
+    #booktab(
+      width:60%,
+      columns: (20%, 1fr, 2fr, 3fr),
+      caption: [这里填写表格名称],
+      [1], [2], [3], [4],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+    )<tab4>
 
 = 参考文献
 
