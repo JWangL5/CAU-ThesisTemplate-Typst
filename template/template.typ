@@ -1,5 +1,6 @@
 #import "../ref/booktab.typ": *
 #import "@preview/codly:0.2.0": *
+#import "@preview/codelst:2.0.1": sourcecode
 #import "../ref/acronyms.typ": acro, usedAcronyms, acronyms
 
 #let project(
@@ -180,11 +181,13 @@
 
     align(center)[
       #heading(outlined: true, level: 1, numbering:none, [摘要])]
+      v(16pt,weak: false)
       set par(justify: true)
       [#h(2em) #abstract_zh]
   
     align(center)[
       #heading(outlined: false, level: 1, numbering: none, [Abstract])]
+      v(16pt,weak: false)
       set par(justify: true)
       [#abstract_en]
   }
@@ -192,7 +195,9 @@
   let contentspage={
     set page(numbering: "I")
     show outline: set heading(level: 1, outlined: true)
-    outline(depth: outlineDepth, indent: n => [#h(2em)] * n, title: [目录])
+    heading(level: 1, numbering: none)[目录]
+    v(16pt,weak: false)
+    outline(depth: outlineDepth, indent: n => [#h(2em)] * n, title: none)
   }
 
   let illustrationspage={
@@ -200,6 +205,7 @@
     set page(numbering: "I")
     // set par(leading: 12pt)
     heading(level: 1, numbering: none)[插图和附表清单]
+    v(16pt,weak: false)
     outline(title:none, target: figure.where(kind:image))
     set par(first-line-indent: 0em)
     outline(title:none, target: figure.where(kind:table))
@@ -210,7 +216,7 @@
     set page(numbering: "I")
     // set par(leading: 12pt)
     heading(level: 1, numbering: none)[缩略词表]
-
+    v(16pt,weak: false)
     set text(font: ("Times New Roman", "SimHei"), size: 10.5pt)
     line(length: 100%); v(-0.5em)
     grid(columns: (20%, 1fr, 30%), align(center)[缩略词], [英文全称], align(center)[中文全称])
