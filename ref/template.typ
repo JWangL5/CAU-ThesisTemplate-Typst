@@ -1,7 +1,7 @@
-#import "../ref/booktab.typ": *
+#import "./booktab.typ": *
 #import "@preview/codly:0.2.0": *
 #import "@preview/codelst:2.0.1": sourcecode
-#import "../ref/acronyms.typ": acro, usedAcronyms, acronyms
+#import "./acronyms.typ": acro, usedAcronyms, acronyms
 
 #let project(
   kind: "硕士",
