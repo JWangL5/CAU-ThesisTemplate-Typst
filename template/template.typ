@@ -1,5 +1,5 @@
 #import "../ref/booktab.typ": *
-#import "@preview/codelst:2.0.1": sourcecode
+#import "@preview/codly:0.2.0": *
 #import "../ref/acronyms.typ": acro, usedAcronyms, acronyms
 
 #let project(
@@ -201,6 +201,7 @@
     // set par(leading: 12pt)
     heading(level: 1, numbering: none)[插图和附表清单]
     outline(title:none, target: figure.where(kind:image))
+    set par(first-line-indent: 0em)
     outline(title:none, target: figure.where(kind:table))
   }
 
@@ -285,7 +286,14 @@
     set figure.caption(separator: [. ])
     show figure.where(supplement: [表]): set figure.caption(position: top)
     show figure.caption: set text(font:("Times New Roman","SimHei"), 9pt)
-    show figure.where(kind: image): set figure(numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i))
+    show figure.where(kind: image): set figure(
+      numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i)
+    )
+    show heading.where(level: 1): it =>{
+      counter(figure.where(kind: table)).update(0)
+      counter(figure.where(kind: image)).update(0)
+      it
+    }
     show figure: it => {
       set text(font:("Times New Roman","SimSun"), 9pt)
       it
@@ -311,7 +319,23 @@
       par()[#text(size:0.0em)[#h(0em)]]
     }
 
+    show: codly-init.with()
+    show raw.where(block: true): set par(justify: false)
+    show raw.where(block:true):it =>{
+      it
+      v(-1em)
+      par()[#text(size:0.0em)[#h(0em)]]
+    }
+    codly(
+      zebra-color: rgb("#FAFAFA"),
+      stroke-width: 2pt,
+      fill: rgb("#FAFAFA"),
+      display-icon: false,
+      padding: 0.5em,
+      display-name: false,
+    )
     body
+    disable-codly()
   }
 
   [

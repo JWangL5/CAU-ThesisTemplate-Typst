@@ -62,9 +62,9 @@
 
 2. 下载该仓库到本地目录或WebApp的工作目录中，可以使用git命令或该页面上方的Code按钮直接下载
 
-    #sourcecode[```bash
+    ```bash
     git clone https://github.com/JWangL5/CAU-ThesisTemplate-Typst.git
-    ```]
+    ```
 
 3. 安装本模板所使用的相关字体（`/fonts`文件夹内字体）
 
@@ -90,37 +90,37 @@
 
 6. 使用`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
 
-    #sourcecode[```cmd
+    ```cmd
     typst compile ./sample.typ
-    ```]
+    ```
 
 === Typst编写简易指南
 
 如果在使用Typst时遇到任何问题，都可以参考#link("https://typst.app/docs/")[官方帮助文档]，下面是简要的使用方法及与本模板相关的配套设置，可以参考的示例文档`sample.typ`
 
 - 关于标题：Typst使用`=`作为标题的指示符。本模板中，一级标题需要手动编号
-    #sourcecode[```
+    ```typst
     = 第一章 一级标题
     == 二级标题
     === 三级标题
-    ```]
+    ```
 
 - 段落的编写：直接输入文本即可编写内容，使用两个回车另起一段
-    #sourcecode[```typst
+    ```typst
     这是内容的第一段，
     这仍旧是第一段的内容
     
     多一个换行符号后另起为第二段
-    ```]
+    ```
 
 - 文字内容的基础格式：使用`*text*`包括住的文字可以加粗，使用`_text_`包括住的文字可以斜体文字，使用`#u[text]`包括住的文字可以实现下划线，使用`#sub[text]`包括住的文字修改为下标，使用`#super[text]`包括住的文字修改为上标
-    #sourcecode[```typst
+    ```typst
     这里是*加粗文字*内容，
     这里是_斜体文字_内容，
     这里是#u[下划线文字]内容，
     这里是#sub[下标文字]内容，
     这里是#super[上标文字]内容
-    ```]
+    ```
 
     效果如下：
     这里是*加粗文字*内容，
@@ -130,34 +130,34 @@
     这里是#super[上标文字]内容
 
 - 使用`#highlight(fill: red)[text]`高亮文字标记，使用`fill`参数修改高亮颜色
-    #sourcecode[```typst
+    ```typst
     这一段文字#highlight[还需要修改]
-    ```]
+    ```
 
     效果如下：这一段文字#highlight[还需要修改]
 
 - 使用`#link("your link here")[text]`标记超链接
-    #sourcecode[```typst
+    ```typst
     这里是#link("https://typst.app/home")[Typst官方网站]
-    ```]
+    ```
 
     效果如下：这里是#link("https://typst.app/home")[Typst官方网站]
 
 - 使用`-`或`+`使用无序列表或有序列表，使用`Tab`缩进为二级列表
-    #sourcecode[```typst
+    ```typst
     - 无序列表1
         + 有序列表1
         + 有序列表2
     - 无序列表2
-    ```]
+    ```
 
 - 使用`#h(2em)`或`#v(1em)`来添加水平或垂直的空白缩进，括号中的参数为需要空出的距离，其单位可以使用`%`（页面百分比），`pt`（点，印刷行业的绝对长度单位，相当于1/72英寸），`em`（字符长度，相对于当前字符大小）等
-    #sourcecode[```typst
+    ```typst
     #h(2em)默认格式会首行缩进两字符，额外添加会再次缩进
-    ```]
+    ```
 
 - 模板使用会汇总图表目录，因而需要使用`#figure()`命令来添加图片（`#image`）或表格（`#booktab`），并填写既定的配置项；图表目录可以自动汇总，可以使用`@`引用图表
-    #sourcecode[```typst
+    ```typst
     #figure(
         image('./image/path.jpg', width: 90%),
         kind: image, 
@@ -175,7 +175,7 @@
         [e], [f], [g], [h],
         [i], [j], [k], [l]
     )<tab1>
-    ```]
+    ```
     
     效果如下：你可以使用@img1 或@tab1 进行引用
     #figure(
@@ -216,13 +216,13 @@
     )<tab3>
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
-    #sourcecode[```typst
+    ```typst
     泰勒展开式（行内）：
     $f(x)= sum_(n=0)^(infinity) (f^(n)(x_0))/(n!) (x-x_0)^n$
     
     欧拉公式（行间）：
     $ e^(i theta) = cos theta + i sin theta \ e^i pi + 1 = 0 $
-    ```]
+    ```
 
     效果如下：泰勒展开式（行内）：
     $f(x)= sum_(n=0)^(infinity) (f^(n)(x_0))/(n!) (x-x_0)^n$
@@ -230,7 +230,7 @@
     欧拉公式（行间）：
     $ e^(i theta) = cos theta + i sin theta \ e^i pi + 1 = 0 $
 
-- 使用`#sourcecode[]`标识符输入代码，Typst可以渲染、显示代码框，如果指定了语言类型，可以根据其语法格式进行风格渲染，使用单个\`符号（数字1左边的按键）使用行内代码
+- 使用\`\`\`标识符输入代码，Typst可以渲染、显示代码框，如果指定了语言类型，可以根据其语法格式进行风格渲染，使用单个\`符号（数字1左边的按键）使用行内代码
 
 - 修改`ref\acronyms.json`文件添加缩略词表，并使用`#acro("keyword1")`命令在文中引入缩略词全称，在引入后会自动根据json文件中信息，排序后添加到缩略词表中
     ```json
