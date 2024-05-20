@@ -1,14 +1,6 @@
-// #import "@preview/tablex:0.0.7": tablex, hlinex, rowspanx
 #import "../ref/booktab.typ": *
-#import "../ref/codelst.typ": sourcecode
+#import "@preview/codelst:2.0.1": sourcecode
 #import "../ref/acronyms.typ": acro, usedAcronyms, acronyms
-
-// #let tl-table = tablex.with(
-//     columns: columns,
-//     auto-lines: false,
-//     hlinex(y: 0),
-//     hlinex(y: 1)
-// )
 
 #let project(
   kind: "硕士",
@@ -60,10 +52,6 @@
   // show strong: set text(font: ("Times New Roman", "SimHei"), weight: "semibold", size: 12pt)
 
   show strong: set text(font: ("Times New Roman", "FZXiaoBiaoSong-B05S"), size: 11pt, baseline: -0.5pt)
-  
-
-  // show regex("[\u4e00-\u9fa5]"): set text(font: "SJheisongti")
-  // show regex("\p{sc=Hani}+"): set text(font: "FZXiaoBiaoSong-B05S")
 
   set par(leading: 12pt, first-line-indent: 2em)
   set list(indent: 1em)
@@ -182,15 +170,6 @@
       [],
       text("时间: "+year+"年"+month+"月"+day+"日"),
     )
-
-    // if draft{ }else{
-    //   place(top+left, dx: 47%, dy: 72%, rotate(-24deg, image("./CAU_Stamp.png", width: 100pt)))
-    //   place(top+left, dx: 47%, dy: 25%, rotate(-24deg, image("./CAU_Stamp.png", width: 100pt)))
-    // }
-    // if(signature != ""){
-    //   place(top+left, dx: 29%, dy: 25%, image("../"+signature, width: 100pt))
-    //   place(top+left, dx: 29%, dy: 68%, image("../"+signature, width: 100pt))
-    // }
 
     pagebreak()
   }
