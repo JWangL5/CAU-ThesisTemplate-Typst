@@ -1,11 +1,15 @@
-#import "./ref/template.typ": *
+// #import "../ref/template.typ": *
+#import "@preview/universal-cau-thesis:0.1.0": *
+
+// 根据README文件填写论文配置项
+// 为保障效果，请手动安装仓库中提供的字体文件
 #show: project.with(
   kind: "硕士",
-  title_zh: [Typst论文模板 \ 论文标题],
-  title_en: [The template of CAU thesis template],
+  title-zh: [Typst论文模板 \ 论文标题],
+  title-en: [The template of CAU thesis template],
   authors: [张三],
   teacher: [李四教授],
-  // co-teacher: [李景睿副教授],
+  // co-teacher: [],
   college: [生物学院],
   degree: [理学硕士],
   major: [细胞生物学],
@@ -15,16 +19,16 @@
   year: [2024],
   month: [5],
   day: [21],
-  outlineDepth: 3,
+  outline-depth: 3,
   security: [公开],
-  abstract_zh: [
+  abstract-zh: [
     历史上的炼金术，我们可以认为它实际上存在着“技”与“道”两个层面，只有这两个层面相结合才能构成完整的炼金术。“技”的层面，就是自古埃及以来冶炼技术的积累，人们掌握了初步的冶炼技术，能够制造出精美的铜器、铁器，但当时的人们对于其原理本身并不甚了解，只能够观察到物质变化的结果，未能参透物质变化的过程，漫长历史继承下来的冶金技术实际上为现代化学奠定了实践经验基础。
     
     而“道”的部分主要源自当时的人们如何解释物质变化，以及为了创造出理想中更为完美的物质，人们该如何进一步地利用冶金技术。在中国，就有道家的“炼丹术”，炼丹的目的主要是为了追求长生不老，为此也创造了一套独有的理论体系，如“内丹术”“外丹术”听起来是和我们接下来提到的“小宇宙”“大宇宙”就有很多相似的部分。而在欧洲，炼金术的主要目的是为了追寻完美的物质，将不完全变为完全。它的理论基础是赫尔墨斯传统，杂糅了埃及冶金学和新柏拉图主义、诺斯替主义以及基督教。
     
     *关键词*：生物炼金术，黄金，莱茵多特
   ],
-  abstract_en:[
+  abstract-en:[
     #lorem(90)
 
     #lorem(100)
@@ -33,9 +37,36 @@
 
     *Keywords*: Bioalchemy, Gold, Rheinland
   ],
-  student_ID: [TWT10056],
+  acknowledgement: [
+    本模板在编写过程中参考并学习了Typst模板的部分代码，在这里统一致谢。
+
+    #heading(level: 6, numbering: none, outlined: false)[]
+  ],
+  author-introduction: [
+    #heading(level: 2, outlined: false, numbering: none)[基本介绍]
+    XXX, X, XXXX年X月出生, 中共党员, 籍贯XX省XX市
+    #heading(level: 2, outlined: false, numbering: none)[教育经历]
+    XXXX年X月-XXXX年X月, 中国农业大学XX学院, XX专业, X学学士
+
+    XXXX年X月-XXXX年X月, 中国农业大学XX学院, XX学位, X学硕士
+
+    #heading(level: 2, outlined: false, numbering: none)[研究生期间参加的会议]
+    XXXX年X月, 中国XXXX学会, 全国第X届XXXX研讨会 (浙江杭州)
+
+    XXXX年X月, XX实验室, XXXXX会议 (北京)
+    #heading(level: 2, outlined: false, numbering: none)[研究生期间主持/参与的科研项目]
+    XXXX-XXXX, 中国农业大学研究生自主创新重点项目, 项目负责人, 《XXXX》
+    #heading(level: 2, outlined: false, numbering: none)[研究生期间获得的奖励和荣誉]
+    XXXX年, 中国农业大学三好学生
+
+    XXXX年, 中国农业大学博士X等奖学金
+  ],
+  student-id: [TWT10056],
+  ref-path: "../template/ref.bib", // 需要手动添加该文件
+  ref-style: "emboj", 
+  acro-path: "../template/acronyms.json", // 需要手动添加该文件
   draft: true,
-  blindReview: false
+  blind-review: false
 )
 
 = 第一章 说明文档
@@ -80,13 +111,13 @@
    - teacher：指导教师的姓名
    - degree：申请学位门类级别，比如`[理学硕士]`
    - college, major, field：封面上的内容，学院、专业和研究方向
-   - signature：你的电子签名，是论文独创性声明处的签字
+   - signature：你的电子签名文件路径，是论文独创性声明处的签字
    - classification & security：论文在图书馆收录时的#link("https://www.clcindex.com/")[中图法分类]和保密级别
-   - student_ID：学号
+   - student-ID：学号
    - year, month, day：论文封面和诚信声明页上的日期
    - outlineDepth：目录的层级，默认显示3级目录
    - draft：填写`true`时添加草稿水印，用以区分是否为最终版本，填写`false`时去除水印并添加论文章
-   - blindReview：填写为`true`时隐藏封面上的相关信息
+   - blindReview：填写为`true`时隐藏封面上的相关信息，以及致谢和作者介绍
 
 6. 使用`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
 
@@ -156,7 +187,7 @@
     #h(2em)默认格式会首行缩进两字符，额外添加会再次缩进
     ```
 
-- 模板使用会汇总图表目录，因而需要使用`#figure()`命令来添加图片（`#image`）或表格（`#booktab`），并填写既定的配置项；图表目录可以自动汇总，可以使用`@`引用图表
+- 模板使用会汇总图表目录，因而需要使用`#figure()`命令来添加图片（`#image`）或表格（`#booktab`），并填写既定的配置项；图表目录可以自动汇总，可以使用`@`引用图表，在表格中可以使用`#l[text]`使文本手动左对齐
     ```typst
     #figure(
         image('./image/path.jpg', width: 90%),
@@ -170,7 +201,7 @@
         columns: (20%, 1fr, 2fr, 3fr),
         caption: [这里填写表格名称],
         kind: table, 
-        [1], [2], [3], [4],
+        [1], l[2], [3], [4],
         [a], [b], [c], [d],
         [e], [f], [g], [h],
         [i], [j], [k], [l]
@@ -232,7 +263,7 @@
 
 - 使用\`\`\`标识符输入代码，Typst可以渲染、显示代码框，如果指定了语言类型，可以根据其语法格式进行风格渲染，使用单个\`符号（数字1左边的按键）使用行内代码
 
-- 修改`ref\acronyms.json`文件添加缩略词表，并使用`#acro("keyword1")`命令在文中引入缩略词全称，在引入后会自动根据json文件中信息，排序后添加到缩略词表中
+- 修改`..\template\acronyms.json`文件添加缩略词表，并使用`#acro("keyword1")`命令在文中引入缩略词全称，在引入后会自动根据json文件中信息，排序后添加到缩略词表中
     ```json
     {
         "keyword1":["英文缩写1", "英文全称1", "中文翻译1"],
@@ -260,61 +291,27 @@
 
 = 第二章 测试页
 
-    #figure(
-        rect(width: 100%, height: 8em, stroke: black, inset: 3em, fill: yellow)[#text(size: 3em)[假装这是一张图]], 
-        kind: image, 
-        supplement: [图],
-        caption: [这里填写图片的标题],
-    )<img2>
+#figure(
+    rect(width: 100%, height: 8em, stroke: black, inset: 3em, fill: yellow)[#text(size: 3em)[假装这是一张图]], 
+    kind: image, 
+    supplement: [图],
+    caption: [这里填写图片的标题],
+)<img2>
 
-    #booktab(
-      width:60%,
-      columns: (20%, 1fr, 2fr, 3fr),
-      caption: [这里填写表格名称],
-      [1], [2], [3], [4],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-    )<tab4>
-
-= 参考文献
-
-#show bibliography: set par(leading: 1em, first-line-indent: 0em)
-#show bibliography: set text(size: 10.5pt)
-#bibliography("./ref/ref.bib", title: none, style: "./ref/the-embo-journal.csl")
+#booktab(
+  width:60%,
+  columns: (20%, 1fr, 2fr, 3fr),
+  caption: [这里填写表格名称],
+  [1], [2], [3], [4],
+  [a], [b], [c], [d],
+  [e], [f], [g], [h],
+  [i], [j], [k], [l],
+)<tab4>
+    
 #heading(level: 6, numbering: none, outlined: false)[]
 
-= 致谢
+PS ：当文本内容仅有1页时，有时页眉标题会出错，可以添加一个空白标题进行修正
 
-本模板在编写过程中参考并学习了Typst模板的部分代码，在这里统一致谢。
-
-#heading(level: 6, numbering: none, outlined: false)[]
-
-= 个人简介
-
-
-#heading(level: 2, outlined: false, numbering: none)[基本介绍]
-
-XXX, X, XXXX年X月出生, 中共党员, 籍贯XX省XX市
-
-#heading(level: 2, outlined: false, numbering: none)[教育经历]
-
-XXXX年X月-XXXX年X月, 中国农业大学XX学院, XX专业, X学学士
-
-XXXX年X月-XXXX年X月, 中国农业大学XX学院, XX学位, X学硕士
-
-#heading(level: 2, outlined: false, numbering: none)[研究生期间参加的会议]
-
-XXXX年X月, 中国XXXX学会, 全国第X届XXXX研讨会 (浙江杭州)
-
-XXXX年X月, XX实验室, XXXXX会议 (北京)
-
-#heading(level: 2, outlined: false, numbering: none)[研究生期间主持/参与的科研项目]
-
-XXXX-XXXX, 中国农业大学研究生自主创新重点项目, 项目负责人, 《XXXX》
-
-#heading(level: 2, outlined: false, numbering: none)[研究生期间获得的奖励和荣誉]
-
-XXXX年, 中国农业大学三好学生
-
-XXXX年, 中国农业大学博士X等奖学金
+  ```typst
+  #heading(level: 6, numbering: none, outlined: false)[]
+  ```
