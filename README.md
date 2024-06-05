@@ -6,7 +6,7 @@
 
 ### 关于本论文模板
 
-本模板参考[中国农业大学毕业论文模板要求](https://jwc.cau.edu.cn/art/2020/2/25/art_14181_663910.html)编写，符合学校要求。对于其中一些可以灵活修改的格式，本模板也提供了配置项，具体详见模板使用方法。模板的效果见`sample.pdf`文件：[点击直达](https://github.com/JWangL5/CAU-ThesisTemplate-Typst/blob/master/sample.pdf)
+本模板参考[中国农业大学毕业论文模板要求](https://jwc.cau.edu.cn/art/2020/2/25/art_14181_663910.html)编写，符合学校要求。对于其中一些可以灵活修改的格式，本模板也提供了配置项，具体详见模板使用方法。模板的效果见`sample.pdf`文件：[点击直达](https://github.com/JWangL5/CAU-ThesisTemplate-Typst/blob/master/template/sample.pdf)
 
 ⚠️ 但是，本模板为个人编写使用，没有完全适配自动化逻辑和模块化代码，可能仍旧存在部分情况排版不合理。如果您在使用过程中遇到问题，可以提交issue说明，也欢迎pull request贡献。
 
@@ -26,7 +26,7 @@
 
     PS：受限于中文字体的衬线问题，目前版本的Typst暂不支持多数中文字体的加粗，这里使用了其他加粗字体作为替代，可以直接双击字体文件打开后安装
 
-4. 本地编写时，建议使用[vscode](https://code.visualstudio.com/)及Typst配套插件（Typst-LSP、Typst Preview）
+4. 本地编写时，建议使用[vscode](https://code.visualstudio.com/)及Typst配套插件（Tinymist Typst、Typst Preview）
 
 5. 通过编写`main.typ`文件完成论文的撰写，在该文件中，使用`import`命令引入模板，并修改配置项
    - kind：填写`"本科"`，`"硕士"`，`"博士"`，其会对应修改封面和页眉处的信息
