@@ -1,5 +1,5 @@
-// #import "../ref/template.typ": *
-#import "@preview/universal-cau-thesis:0.1.0": *
+#import "../ref/template.typ": *
+// #import "@preview/universal-cau-thesis:0.1.0": *
 
 // 根据README文件填写论文配置项
 // 为保障效果，请手动安装仓库中提供的字体文件

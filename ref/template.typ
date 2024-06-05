@@ -94,7 +94,7 @@
       stroke:0pt+white,
       align: left+horizon,
       inset:0pt,
-      justify[分类号], [:], [#classification], justify[单位代码], [:], [100019],
+      justify[分类号], [:], [#classification], justify[单位代码], [:], [10019],
       justify[密级],   [:], [#security], justify[学号],     [:], [#student-id]
     )
   
