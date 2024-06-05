@@ -14,7 +14,7 @@
 
 ### 使用方法
 
-1. Typst可以使用[线上WebApp](https://typst.app/)或本地下载编译器后进行编写，本地编写需要[下载安装编译器](https://github.com/typst/typst/releases)到本地，并将`exe`格式的编译器添加到环境变量，以方便调用
+1. Typst可以使用[线上WebApp](https://typst.app/)或本地下载编译器后进行编写。可以通过[Typst的模板站点Typst Universe](https://typst.app/universe/package/universal-cau-thesis)直接创建该项目。本地编写需要[下载安装编译器](https://github.com/typst/typst/releases)到本地，并将`exe`格式的编译器添加到环境变量，以方便调用
 
 2. 下载该仓库到本地目录或WebApp的工作目录中，可以使用git命令或该页面上方的Code按钮直接下载
 
@@ -28,7 +28,7 @@
 
 4. 本地编写时，建议使用[vscode](https://code.visualstudio.com/)及Typst配套插件（Tinymist Typst、Typst Preview）
 
-5. 通过编写`main.typ`文件完成论文的撰写，在该文件中，使用`import`命令引入模板，并修改配置项
+5. 通过修改`template`目录下的文件完成论文的编写。其中`sample.typ`文件是论文的案例模板，在该文件中，首先使用`import`命令引入本地模板后，修改配置项
    - kind：填写`"本科"`，`"硕士"`，`"博士"`，其会对应修改封面和页眉处的信息
    - title：论文标题，填写在括号`[text]`内，使用`\`换行
    - abstract：论文摘要，需要手动写关键词
@@ -43,16 +43,16 @@
    - draft：填写`true`时添加草稿水印，用以区分是否为最终版本，填写`false`时去除水印并添加论文章
    - blindReview：填写为`true`时隐藏封面上的相关信息，以及致谢和作者介绍
 
-6. 使用`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
+6. 使用如下`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
 
     ```cmd
-    typst compile ./sample.typ
+    typst compile .\template\sample.typ -root '..\'
     ```
 
 
 ### Typst编写简易指南
 
-> 如果在使用Typst时遇到任何问题，都可以参考[官方帮助文档](https://typst.app/docs/)，下面是简要的使用方法及与本模板相关的配套设置，可以参考的示例文档`sample.typ`
+> 如果在使用Typst时遇到任何问题，都可以参考[官方帮助文档](https://typst.app/docs/)，下面是简要的使用方法及与本模板相关的配套设置，可以参考的示例文档`template\sample.typ`
 
 - 关于标题：Typst使用`=`作为标题的指示符。本模板中，一级标题需要手动编号，二、三级标题则不需要
 
@@ -122,12 +122,16 @@
         columns: (20%, 1fr, 2fr, 3fr),
         caption: [这里填写表格名称],
         kind: table, 
-        [1], [2], [3], [4],
-        [a], [b], [c], [d],
-        [e], [f], [g], [h],
-        [i], [j], [k], [l]
+        [1], [2], [3], l[4],
+        [a], [b], [c], l[d],
+        [e], [f], [g], l[h],
+        [i], [j], [k], l[l]
     )<tab1>
     ```
+
+- 表格的单元格默认是水平居中对齐，模板添加了便捷的`#l[左对齐]`命令修改特定单元格为左对齐，如上面表格案例中的第四列为左对齐
+
+- 可以搭配使用`#place(top+center, float: True, [#figure(...)<fig1>])`将图表锁定在纸张的固定位置，而不受到周围文字的影响
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
     ```typst
@@ -146,7 +150,7 @@
     同样支持行内代码`hello world`
     ```
     
-- 修改`ref\acronyms.json`文件添加缩略词表，并使用`#acro("keyword1")`命令在文中引入缩略词全称，在引入后会自动根据json文件中信息，排序后添加到缩略词表中
+- 修改`template\acronyms.json`文件添加缩略词表，并使用`#acro("keyword1")`命令在文中引入缩略词全称，在引入后会自动根据json文件中信息，排序后添加到缩略词表中
     ```json
     {
         "keyword1":["英文缩写1", "英文全称1", "中文翻译1"],
@@ -158,11 +162,11 @@
     ```
 - 使用`#[bibliography]()`添加参考文献，括号中需要填写`.bib`格式的参考文献列表，在文中使用`@citationKey`引用，具体的信息见[帮助文档](https://typst.app/docs/reference/model/bibliography/)
   
-    PS：可以使用`zotero+Better BibTex`自动导出/更新`.bib`格式的参考文献列表
+    PS：可以使用`zotero+Better BibTex`自动导出/更新`.bib`格式的参考文献列表，替换`template\ref.bib`文件或直接修改项目头中的`ref-path`参数
 
     PS：在添加bib的代码后面，隐藏了一个heading，请不要删除这一行，否则参考文献的页眉会出错
 
-    PS：根据学院要求默认使用EmboJ的格式，如果需要其他格式，只要下载到格式说明`.csl`文件修改参数即可
+    PS：根据学院要求默认使用EmboJ的格式，如果需要其他格式，只要下载格式样式文件（`.csl`格式），并修改项目头中`ref-style`参数即可
 
 - 当文本内容仅有1页时，有时页眉标题会出错，可以添加一个空白标题进行修正
 
