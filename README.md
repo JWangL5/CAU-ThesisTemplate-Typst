@@ -107,7 +107,7 @@
     #h(2em)默认格式会首行缩进两字符，额外添加会再次缩进
     ```
 
-- 模板支持自动汇总图表目录，可以使用`#figure(image())`命令来添加图片或使用`#booktab()`添加表格，在填写既定的配置项后可成功渲染并自动汇总目录页，可以使用`@`引用图表
+- 模板支持自动汇总图表目录，可以使用`#figure(image())`命令来添加图片或使用`#booktab()`添加表格，在之后可以使用`#legend[]`添加图注或表注，在填写既定的配置项后可成功渲染并自动汇总目录页，可以使用`@`引用图表
 
     ```typst
     #figure(
@@ -116,6 +116,7 @@
         supplement: [图],
         caption: [图片的标题],
     )<img1>
+    #legend[这是一个对图注的案例]
     
     #booktab(
         width:60%,
@@ -131,7 +132,7 @@
 
 - 表格的单元格默认是水平居中对齐，模板添加了便捷的`#l[左对齐]`命令修改特定单元格为左对齐，如上面表格案例中的第四列为左对齐
 
-- 可以搭配使用`#place(top+center, float: True, [#figure(...)<fig1>])`将图表锁定在纸张的固定位置，而不受到周围文字的影响
+- 可以搭配使用`#place(top+center, float: True, [#figure(...)<fig1>]) #place(top, float: True, legend[])`将图表锁定在纸张的固定位置，而不受到周围文字的影响
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
     ```typst

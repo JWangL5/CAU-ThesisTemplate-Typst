@@ -329,7 +329,7 @@
 
     set figure.caption(separator: [. ])
     show figure.where(supplement: [表]): set figure.caption(position: top)
-    show figure.caption: set text(font:("Times New Roman","SimHei"), 9pt)
+    show figure.caption: set text(font:("Times New Roman","SimHei"), 10.5pt)
     show figure.where(kind: image): set figure(
       numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i)
     )
@@ -339,13 +339,13 @@
       it
     }
     show figure.where(kind: image): it => {
-      set text(font:("Times New Roman","SimSun"), 9pt)
+      set text(font:("Times New Roman","SimSun"), 10.5pt)
       it
       v(-4pt)
       par()[#text(size:0.0em)[#h(0em)]]
     }
     show figure.where(kind: table): it => {
-      set text(font:("Times New Roman","SimSun"), 9pt)
+      set text(font:("Times New Roman","SimSun"), 10.5pt)
       it
       v(-1em)
       par()[#text(size:0.0em)[#h(0em)]]
@@ -407,4 +407,8 @@
 
 #let l(it) = align(left)[#it]
 #let u(it) = underline(offset: 5pt)[#it]
-
+#let legend(it) = block(breakable: false, above: 8pt)[
+  #set text(size: 9pt)
+  #set par(first-line-indent: 2em, leading:1em)
+  #align(left)[#h(2em) #it]
+]

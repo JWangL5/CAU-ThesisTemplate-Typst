@@ -215,6 +215,7 @@
         supplement: [图],
         caption: [这里填写图片的标题],
     )<img1>
+    #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
     #booktab(
       width:60%,
@@ -225,6 +226,7 @@
       [e], [f], [g], [h],
       [i], [j], [k], [l],
     )<tab1>
+    #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
     #booktab(
       width:60%,
@@ -236,7 +238,10 @@
       caption: [这里填写表格名称],
     )<tab2>
 
-    #booktab(
+#place(
+  bottom+center,
+  float: true,
+  [#booktab(
       width:60%,
       columns: (20%, 1fr, 2fr, 3fr),
       [1], [2], [3], [4],
@@ -245,6 +250,14 @@
       [i], [j], [k], [l],
       caption: [这里填写表格名称],
     )<tab3>
+  ]
+)
+
+#place(
+  bottom,
+  float: true,
+  legend[这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字]
+)
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
     ```typst
@@ -307,11 +320,13 @@
   [e], [f], [g], [h],
   [i], [j], [k], [l],
 )<tab4>
-    
-#heading(level: 6, numbering: none, outlined: false)[]
+
+#legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
 PS ：当文本内容仅有1页时，有时页眉标题会出错，可以添加一个空白标题进行修正
 
   ```typst
   #heading(level: 6, numbering: none, outlined: false)[]
   ```
+
+#heading(level: 6, numbering: none, outlined: false)[]
