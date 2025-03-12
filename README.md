@@ -14,21 +14,16 @@
 
 ### 使用方法
 
-1. Typst可以使用[线上WebApp](https://typst.app/)或本地下载编译器后进行编写。可以通过[Typst的模板站点Typst Universe](https://typst.app/universe/package/universal-cau-thesis)直接创建该项目。本地编写需要[下载安装编译器](https://github.com/typst/typst/releases)到本地，并将`exe`格式的编译器添加到环境变量，以方便调用
+1. Typst可以使用[线上WebApp](https://typst.app/)或本地下载编译器后进行编写。😎 建议克隆该仓库本地使用
+    - 线上编写可以通过[Typst的模板站点Typst Universe](https://typst.app/universe/package/universal-cau-thesis)直接创建该项目。本地编写需要[下载安装编译器](https://github.com/typst/typst/releases)到本地，并将`exe`格式的编译器添加到环境变量，以方便调用
 
-2. 下载该仓库到本地目录或WebApp的工作目录中，可以使用git命令或该页面上方的Code按钮直接下载
+    - 本地编写时，建议使用[vscode](https://code.visualstudio.com/)及Typst配套插件（Tinymist Typst、Typst Preview），并下载该仓库到本地目录或WebApp的工作目录中，可以使用git命令或该页面上方的Code按钮直接下载
 
-    ```git
-    git clone https://github.com/JWangL5/CAU-ThesisTemplate-Typst.git
-    ```
+        ```git
+        git clone https://github.com/JWangL5/CAU-ThesisTemplate-Typst.git
+        ```
 
-3. 安装本模板所使用的相关字体（`/fonts`文件夹内字体）
-
-    PS：受限于中文字体的衬线问题，目前版本的Typst暂不支持多数中文字体的加粗，这里使用了其他加粗字体作为替代，可以直接双击字体文件打开后安装
-
-4. 本地编写时，建议使用[vscode](https://code.visualstudio.com/)及Typst配套插件（Tinymist Typst、Typst Preview）
-
-5. 通过修改`template`目录下的文件完成论文的编写。其中`sample.typ`文件是论文的案例模板，在该文件中，首先使用`import`命令引入本地模板后，修改配置项
+3. 通过修改`template`目录下的文件完成论文的编写。其中`sample.typ`文件是论文的案例模板，在该文件中，首先使用`import`命令引入本地模板后，修改配置项
    - kind：填写`"本科"`，`"硕士"`，`"博士"`，其会对应修改封面和页眉处的信息
    - title：论文标题，填写在括号`[text]`内，使用`\`换行
    - abstract：论文摘要，需要手动写关键词
@@ -42,8 +37,9 @@
    - year, month, day：论文封面和诚信声明页上的日期
    - draft：填写`true`时添加草稿水印，用以区分是否为最终版本，填写`false`时去除水印并添加论文章
    - blindReview：填写为`true`时隐藏封面上的相关信息，以及致谢和作者介绍
+   - abstract-en-outlined：是否将英文摘要列入目录中，默认为true
 
-6. 使用如下`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
+4. 使用如下`typst`命令生成pdf格式文件，或直接使用vscode的实时预览插件（默认快捷键`ctrl+k v`）
 
     ```cmd
     typst compile .\template\sample.typ -root '..\'
