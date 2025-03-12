@@ -2,6 +2,7 @@
 // #import "@preview/codly:0.2.0": *
 #import "@preview/codelst:2.0.1": sourcecode
 #import "./acronyms.typ": acro, usedAcronyms, acronyms
+#import "@preview/cuti:0.3.0": show-cn-fakebold
 
 #let project(
   kind: "硕士",
@@ -52,15 +53,16 @@
   set page(
     paper: "a4",
     margin: (left: 25mm, right: 25mm, top: 30mm, bottom: 25mm),
-    background: if draft {rotate(-12deg, text(80pt, font:"Sigmar One", fill: silver)[DRAFT])} else {},
+    background: if draft {rotate(-12deg, text(80pt, font:"Cooper", fill: silver)[DRAFT])} else {},
   )
 
   set text(font: ("Times New Roman", "SimSun"), size: 12pt, hyphenate: false)
   
   // show strong: set text(font: ("Times New Roman", "SimHei"), weight: "semibold", size: 12pt)
 
-  show strong: set text(font: ("Times New Roman", "FZXiaoBiaoSong-B05S"), size: 11pt, baseline: -0.5pt)
-
+  // show strong: set text(font: ("Times New Roman"), size: 11pt, baseline: -0.5pt)
+  show: show-cn-fakebold
+  
   set par(leading: 12pt, first-line-indent: 2em)
   set list(indent: 1em)
   set enum(indent: 1em)
@@ -82,8 +84,8 @@
   let titlepage = {
 
     let justify(s) = {
-      if type(s) == "content" and s.has("text") { s = s.text }
-      assert(type(s) == "string")
+      if type(s) == content and s.has("text") { s = s.text }
+      assert(type(s) == type("string"))
       s.clusters().join(h(1fr))
     }
 
@@ -108,7 +110,7 @@
       #text(22pt, font:("Times New Roman", "SimHei"), weight: 700, title-zh)
     ]
     align(center)[
-      #set text(16pt, font:"Time New Roman", weight: 700, baseline:-8pt)
+      #set text(16pt, font:"Times New Roman", weight: 700, baseline:-8pt)
       #title-en
     ]
     v(40pt)
