@@ -30,6 +30,7 @@
   outline-depth: 3,
   draft:true,
   blind-review: false,
+  abstract-en-outlined: true,
   logo:"./CAU_Logo.png",
   ref-path: "",
   ref-style:"emboj",
@@ -76,7 +77,7 @@
     #block(width: 100%)[
       #set align(center)
       #v(6pt,weak: false)
-      #text(font: ("Times New Roman","Microsoft YaHei"), weight: "bold", 16pt)[#it.body]
+      #text(font: ("Times New Roman", "SimHei"), weight: "bold", 16pt)[#it.body]
       #v(6pt,weak: false)
     ]
   ]
@@ -204,7 +205,7 @@
       [#h(2em) #abstract-zh]
   
     align(center)[
-      #heading(outlined: false, level: 1, numbering: none, [Abstract])]
+      #heading(outlined: abstract-en-outlined, level: 1, numbering: none, [Abstract])]
       v(16pt,weak: false)
       set par(justify: true)
       [#abstract-en]
@@ -310,7 +311,7 @@
         block(width:100%, breakable: false, spacing: 0em)[
           #set align(center)
           #v(16pt,weak: false)
-          #text(font: ("Times New Roman","Microsoft YaHei"), weight: "bold", 16pt)[#it.body]
+          #text(font: ("Times New Roman", "SimHei"), weight: "bold", 16pt)[#it.body]
           #v(16pt,weak: false)
         ]
       } else if it.level == 2 {
@@ -321,7 +322,7 @@
         ]
       } else if it.level == 3 {
         block(breakable: false, spacing: 0em)[
-          #v(12pt, weak: false)
+          #v(24pt, weak: false)
           #text(font: ("Times New Roman","SimHei"), 12pt, weight: "regular")[#it]
           #v(12pt, weak: false)
         ]
@@ -329,7 +330,7 @@
       par()[#text(size:0.0em)[#h(0em)]]
     }
 
-    set figure.caption(separator: [. ])
+    set figure.caption(separator: [#h(0.5em)])
     show figure.where(supplement: [表]): set figure.caption(position: top)
     show figure.caption: set text(font:("Times New Roman","SimHei"), 10.5pt)
     show figure.where(kind: image): set figure(
@@ -409,7 +410,7 @@
 
 #let l(it) = align(left)[#it]
 #let u(it) = underline(offset: 5pt)[#it]
-#let legend(it) = block(breakable: false, above: 8pt)[
+#let legend(it) = block(breakable: false, above: 8pt, inset:(x:2em))[
   #set text(size: 9pt)
   #set par(first-line-indent: 2em, leading:1em)
   #align(left)[#h(2em) #it]
