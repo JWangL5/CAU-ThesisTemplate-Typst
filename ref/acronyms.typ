@@ -11,9 +11,12 @@
     return highlight(fill: red, [*Warning: #body*],)
   }
 
-  usedAcronyms.display(usedDic => {
-    return eval(acronyms.at(body).at(1), mode: "markup")
-  });
+  // let usedDic = context usedAcronyms.get()
+  eval(acronyms.at(body).at(1), mode: "markup")
+  // usedAcronyms.display(usedDic => {
+  //   return eval(acronyms.at(body).at(1), mode: "markup")
+  // });
+  // eval(acronyms.at(body).at(1), mode: "markup")
   usedAcronyms.update(usedDic => {
     usedDic.insert(body, true)
     return usedDic

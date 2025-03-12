@@ -1,5 +1,5 @@
 #import "./booktab.typ": *
-#import "@preview/codly:0.2.0": *
+// #import "@preview/codly:0.2.0": *
 #import "@preview/codelst:2.0.1": sourcecode
 #import "./acronyms.typ": acro, usedAcronyms, acronyms
 
@@ -213,7 +213,7 @@
     show outline: set heading(level: 1, outlined: true)
     heading(level: 1, numbering: none)[目录]
     v(16pt,weak: false)
-    outline(depth: outline-depth, indent: n => [#h(2em)] * n, title: none)
+    outline(depth: outline-depth, indent: n => 2em * n, title: none)
   }
 
   let illustrationspage={
@@ -238,22 +238,22 @@
     grid(columns: (20%, 1fr, 30%), align(center)[缩略词], [英文全称], align(center)[中文全称])
     v(-0.5em); line(length: 100%)
     set text(font: ("Times New Roman", "SimSun"), size: 10.5pt)
-    locate(loc => usedAcronyms.final(loc)
-      .pairs()
-      .filter(x => x.last())
-      .map(pair => pair.first())
-      .sorted()
-      .map(key => grid(
-          columns: (20%, 1fr, 30%),
-          align(center)[#eval(acronyms.at(key).at(0), mode: "markup")], 
-          eval(acronyms.at(key).at(1), mode: "markup"), 
-          align(center)[#eval(acronyms.at(key).at(2), mode: "markup")],
-        )
-      )
-      .join()
-    )
+    context {
+        usedAcronyms.final()
+            .pairs()
+            .filter(x => x.last())
+            .map(pair => pair.first())
+            .sorted()
+            .map(key => grid(
+                columns: (20%, 1fr, 30%),
+                align(center)[#eval(acronyms.at(key).at(0), mode: "markup")], 
+                eval(acronyms.at(key).at(1), mode: "markup"), 
+                align(center)[#eval(acronyms.at(key).at(2), mode: "markup")],
+                )
+            )
+            .join()
+    }
     line(length: 100%)
-
   }
 
   let acknowledgementpage = [
@@ -287,10 +287,10 @@
         #set text(9pt, font:("Times New Roman", "SimSun"))
         #text("中国农业大学"+kind+"学位论文")
         #h(1fr)
-        #locate(loc => {
-          let eloc = query(selector(heading).after(loc), loc).at(0).location()
-          query(selector(heading.where(level:1)).before(eloc), eloc).last().body.text
-        })
+        #context {
+            let eloc = query(selector(heading).after(here())).at(0).location()
+            query(selector(heading.where(level:1)).before(eloc)).last().body.text
+        }
         #v(-3.8pt)
         #line(length: 100%, stroke: 3pt)
         #v(-8pt)
@@ -369,28 +369,28 @@
       par()[#text(size:0.0em)[#h(0em)]]
     }
 
-    show: codly-init.with()
+    // show: codly-init.with()
     show raw.where(block: true): set par(justify: false)
     show raw.where(block:true):it =>{
       it
       v(-4pt)
       par()[#text(size:0.0em)[#h(0em)]]
     }
-    codly(
-      zebra-color: rgb("#FAFAFA"),
-      stroke-width: 2pt,
-      fill: rgb("#FAFAFA"),
-      display-icon: false,
-      padding: 0.5em,
-      display-name: false,
-    )
+    // codly(
+    //   zebra-color: rgb("#FAFAFA"),
+    //   stroke-width: 2pt,
+    //   fill: rgb("#FAFAFA"),
+    //   display-icon: false,
+    //   padding: 0.5em,
+    //   display-name: false,
+    // )
     [
       #body
       #reference
       #acknowledgementpage
       #authorpage
     ]
-    disable-codly()
+    // disable-codly()
   }
 
   [
