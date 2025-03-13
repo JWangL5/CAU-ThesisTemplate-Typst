@@ -61,6 +61,7 @@
 
     XXXX年, 中国农业大学博士X等奖学金
   ],
+  appendix: [123], 
   student-id: [TWT10056],
   ref-path: "../template/ref.bib", // 需要手动添加该文件
   ref-style: "emboj", 
@@ -208,7 +209,7 @@
     )<tab1>
     ```
     
-    效果如下：你可以使用@img1 或@tab1 进行引用
+    效果如下：你可以使用@img1 A或@tab1 进行引用
     #figure(
         rect(width: 100%, height: 8em, stroke: black, inset: 3em, fill: yellow)[#text(size: 3em)[假装这是一张图]], 
         kind: image, 
@@ -330,3 +331,4 @@ PS ：当文本内容仅有1页时，有时页眉标题会出错，可以添加�
   ```
 
 #heading(level: 6, numbering: none, outlined: false)[]
+

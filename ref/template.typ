@@ -23,6 +23,7 @@
   security:[],
   acknowledgement: [],
   author-introduction: [],
+  appendix:[],
   student-id:[],
   year: [],
   month: [],
@@ -269,6 +270,12 @@
     #author-introduction
   ]
 
+  let appendixpage=[
+    = 附录
+    #appendix
+    #heading(level: 6, numbering: none, outlined: false)[]
+  ]
+
   let reference = {
     show bibliography: set par(leading: 1em, first-line-indent: 0em)
     show bibliography: set text(size: 10.5pt)
@@ -332,6 +339,13 @@
 
     set figure.caption(separator: [#h(0.5em)])
     show figure.where(supplement: [表]): set figure.caption(position: top)
+    // show ref.where(form: "normal"): it => {
+    //   it
+    //   h(-0.2em)
+    //   if it.target == bibliography {
+    //     h(0.2em)
+    //   }
+    // }
     show figure.caption: set text(font:("Times New Roman","SimHei"), 10.5pt)
     show figure.where(kind: image): set figure(
       numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i)
@@ -391,6 +405,7 @@
       #body
       #reference
       #acknowledgementpage
+      #appendixpage
       #authorpage
     ]
     // disable-codly()
@@ -413,5 +428,6 @@
 #let legend(it) = block(breakable: false, above: 8pt, inset:(x:2em))[
   #set text(size: 9pt)
   #set par(first-line-indent: 2em, leading:1em)
-  #align(left)[#h(2em) #it]
+  #align(left)[#it]
+  #par()[#text(size:0.0em)[#h(0em)]]
 ]
