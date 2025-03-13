@@ -316,6 +316,7 @@
   width:60%,
   columns: (20%, 1fr, 2fr, 3fr),
   caption: [这里填写表格名称],
+  breakable: true, // 控制表格的跨页
   [1], [2], [3], [4],
   [a], [b], [c], [d],
   [e], [f], [g], [h],
