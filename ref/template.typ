@@ -1,4 +1,4 @@
-#import "./booktab.typ": *
+// #import "./booktab.typ": *
 // #import "@preview/codly:0.2.0": *
 #import "@preview/codelst:2.0.1": sourcecode
 #import "./acronyms.typ": acro, usedAcronyms, acronyms
@@ -347,6 +347,7 @@
     set table(stroke: frame(1pt))
     set table.header(repeat: true)
 
+    show figure: set block(breakable: true)
     set figure.caption(separator: [#h(0.5em)])
     show figure.where(supplement: [表]): set figure.caption(position: top)
     // show ref.where(form: "normal"): it => {
@@ -441,3 +442,8 @@
   #align(left)[#it]
   #par()[#text(size:0.0em)[#h(0em)]]
 ]
+#let loadcsv(csvFilePath, columns:(), ..args) = table(
+    columns: columns,
+    ..csv("../template/"+csvFilePath).flatten(),
+  )
+

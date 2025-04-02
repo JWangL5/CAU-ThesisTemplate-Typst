@@ -198,13 +198,17 @@
     )<img1>
     
     #figure(
-      #table(
+      table(
         columns: (20%, 1fr, 2fr, 3fr),
         [1], l[2], [3], [4],
         [a], [b], [c], [d],
         [e], [f], [g], [h],
         [i], [j], [k], [l],
-      )<tab1>
+      ),
+      kind: table, 
+      supplement: [表],
+      caption: [图片的标题],
+    )<tab1>
     ```
     
     // 效果如下：你可以使用@img1 A或@tab1 进行引用
@@ -216,57 +220,65 @@
     )<img1>
     #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
-    #table(
-      columns: (20%, 1fr, 2fr, 3fr),
-      table.header([1], [2], [3], [4]),
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
+    #figure(
+      kind: table, 
+      supplement: [表],
+      caption: [图片的标题],
+      table(
+        columns: (20%, 1fr, 2fr, 3fr),
+        table.header([1], [2], [3], [4]),
+        [a], [b], [c], [d],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l],
+
+      )
     )<tab1>
     #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
-    #table(
-      // width:60%,
-      columns: (20%, 1fr, 2fr, 3fr),
-      [1], [2], [3], [4],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      // caption: [这里填写表格名称],
-    )<tab2>
+- 使用csv数据加载表格
+  ```
+  #let results = csv("example.csv")
+  #table(
+    columns: 2,
+    [*Condition*], [*Result*],
+    ..results.flatten(),
+  )
+  ```
+#figure(
+  [
+    #loadcsv(
+      columns: (50pt, 180pt),
+      "csvdata.csv"
+    )
+    
+  ],
+  kind: table, 
+  supplement: [表],
+  caption: [图片的标题],
+)
 
 #place(
   bottom+center,
   float: true,
-  [#table(
-      // width:60%,
-      columns: (20%, 1fr, 2fr, 3fr),
-      [1], [2], [3], [4],
-      [a], [b], [c], [d],
-      [e], [f], [g], [h],
-      [i], [j], [k], [l],
-      // caption: [这里填写表格名称],
+  [#figure(
+      table(
+        columns: (20%, 1fr, 2fr, 3fr),
+        [1], [2], [3], [4],
+        [a], [b], [c], [d],
+        [e], [f], [g], [h],
+        [i], [j], [k], [l],
+      ),
+      // placement: bottom,
+      kind: table, 
+      supplement: [表],
+      caption: [图片的标题],
     )<tab3>
+    #legend[这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字]
   ]
-)
-
-#place(
-  bottom,
-  float: true,
-  legend[这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字]
 )
 
 - 使用`$`编写数学公式，`$`符紧跟内容时为行内公式，添加空格后为行间公式，公式的具体规则和[符号](https://typst.app/docs/reference/symbols/sym/)可以查[帮助文档](https://typst.app/docs/reference/math/)
