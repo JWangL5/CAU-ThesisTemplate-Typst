@@ -3,6 +3,7 @@
 #import "@preview/codelst:2.0.1": sourcecode
 #import "./acronyms.typ": acro, usedAcronyms, acronyms
 #import "@preview/cuti:0.3.0": show-cn-fakebold
+#import "@preview/tablex:0.0.9": tablex, hlinex, vlinex,
 
 #let project(
   kind: "硕士",
@@ -336,6 +337,15 @@
       }
       par()[#text(size:0.0em)[#h(0em)]]
     }
+
+    let frame(stroke) = (x, y) => (
+      left: none,
+      right: none,
+      top: if y < 2 { stroke } else { 0pt },
+      bottom: stroke,
+    )
+    set table(stroke: frame(1pt))
+    set table.header(repeat: true)
 
     set figure.caption(separator: [#h(0.5em)])
     show figure.where(supplement: [表]): set figure.caption(position: top)

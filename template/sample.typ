@@ -197,19 +197,17 @@
         caption: [图片的标题],
     )<img1>
     
-    #booktab(
-        width:60%,
+    #figure(
+      #table(
         columns: (20%, 1fr, 2fr, 3fr),
-        caption: [这里填写表格名称],
-        kind: table, 
         [1], l[2], [3], [4],
         [a], [b], [c], [d],
         [e], [f], [g], [h],
-        [i], [j], [k], [l]
-    )<tab1>
+        [i], [j], [k], [l],
+      )<tab1>
     ```
     
-    效果如下：你可以使用@img1 A或@tab1 进行引用
+    // 效果如下：你可以使用@img1 A或@tab1 进行引用
     #figure(
         rect(width: 100%, height: 8em, stroke: black, inset: 3em, fill: yellow)[#text(size: 3em)[假装这是一张图]], 
         kind: image, 
@@ -218,38 +216,49 @@
     )<img1>
     #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
-    #booktab(
-      width:60%,
+    #table(
       columns: (20%, 1fr, 2fr, 3fr),
-      caption: [这里填写表格名称],
-      [1], [2], [3], [4],
+      table.header([1], [2], [3], [4]),
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
+      [a], [b], [c], [d],
+      [e], [f], [g], [h],
+      [i], [j], [k], [l],
       [a], [b], [c], [d],
       [e], [f], [g], [h],
       [i], [j], [k], [l],
     )<tab1>
     #legend[这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注；这是一段的文字内容作为图注]
 
-    #booktab(
-      width:60%,
+    #table(
+      // width:60%,
       columns: (20%, 1fr, 2fr, 3fr),
       [1], [2], [3], [4],
       [a], [b], [c], [d],
       [e], [f], [g], [h],
       [i], [j], [k], [l],
-      caption: [这里填写表格名称],
+      // caption: [这里填写表格名称],
     )<tab2>
 
 #place(
   bottom+center,
   float: true,
-  [#booktab(
-      width:60%,
+  [#table(
+      // width:60%,
       columns: (20%, 1fr, 2fr, 3fr),
       [1], [2], [3], [4],
       [a], [b], [c], [d],
       [e], [f], [g], [h],
       [i], [j], [k], [l],
-      caption: [这里填写表格名称],
+      // caption: [这里填写表格名称],
     )<tab3>
   ]
 )
@@ -312,11 +321,11 @@
     caption: [这里填写图片的标题],
 )<img2>
 
-#booktab(
-  width:60%,
+#table(
+  // width:60%,
   columns: (20%, 1fr, 2fr, 3fr),
-  caption: [这里填写表格名称],
-  breakable: true, // 控制表格的跨页
+  // caption: [这里填写表格名称],
+  // breakable: true, // 控制表格的跨页
   [1], [2], [3], [4],
   [a], [b], [c], [d],
   [e], [f], [g], [h],
