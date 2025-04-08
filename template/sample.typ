@@ -61,7 +61,11 @@
 
     XXXX年, 中国农业大学博士X等奖学金
   ],
-  appendix: [123], 
+  appendix: [
+    #show table: set text(size: 10pt)
+    #loadcsv("./引物表-全.csv", columns: (28%, 72%), inset: 0pt)
+
+  ], 
   student-id: [TWT10056],
   ref-path: "../template/ref.bib", // 需要手动添加该文件
   ref-style: "emboj", 
@@ -273,9 +277,10 @@
         [i], [j], [k], [l],
       ),
       // placement: bottom,
-      kind: table, 
-      supplement: [表],
-      caption: [图片的标题],
+      // kind: table, 
+      // supplement: [表],
+      numbering: none,
+      // caption: [图片的标题],
     )<tab3>
     #legend[这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字；这是一个背置于底部的图注文字]
   ]
