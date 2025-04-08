@@ -361,6 +361,9 @@
     show figure.where(kind: image): set figure(
       numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i)
     )
+    show figure.where(kind: table): set figure(
+      numbering: i=> numbering("1-1", ..counter(heading.where(level: 1)).get(), i)
+    )
     show heading.where(level: 1): it =>{
       counter(figure.where(kind: table)).update(0)
       counter(figure.where(kind: image)).update(0)
