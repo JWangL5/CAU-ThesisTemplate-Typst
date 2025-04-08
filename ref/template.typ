@@ -4,6 +4,7 @@
 #import "./acronyms.typ": acro, usedAcronyms, acronyms
 #import "@preview/cuti:0.3.0": show-cn-fakebold
 #import "@preview/tablex:0.0.9": tablex, hlinex, vlinex,
+#import "@preview/a2c-nums:0.0.1": int-to-cn-num, int-to-cn-simple-num
 
 #let project(
   kind: "硕士",
@@ -26,9 +27,9 @@
   author-introduction: [],
   appendix:[],
   student-id:[],
-  year: [],
-  month: [],
-  day: [],
+  year:int,
+  month:int,
+  day:int,
   outline-depth: 3,
   draft:true,
   blind-review: false,
@@ -143,7 +144,7 @@
     ]
     
     v(75pt)
-    align(center, year+"年"+month+"月")
+    align(center, int-to-cn-simple-num(str(year)).replace("〇", "零")+"年"+int-to-cn-num(month)+"月")
     pagebreak()
   }
 
@@ -160,7 +161,7 @@
       [],
       [学位论文作者签名:],
       [],
-      text("时间: "+year+"年"+month+"月"+day+"日"),
+      text("时间: "+str(year)+"年"+str(month)+"月"+str(day)+"日"),
     )
     v(4em)
 
@@ -173,7 +174,7 @@
       [],
       [学位论文作者签名:],
       [],
-      text("时间: "+year+"年"+month+"月"+day+"日"),
+      text("时间: "+str(year)+"年"+str(month)+"月"+str(day)+"日"),
     )
     v(2em)
     grid(
@@ -181,7 +182,7 @@
       [],
       [导师签名:],
       [],
-      text("时间: "+year+"年"+month+"月"+day+"日"),
+      text("时间: "+str(year)+"年"+str(month)+"月"+str(day)+"日"),
     )
 
     if draft{ }else{

@@ -16,9 +16,9 @@
   field: [细胞增殖调控与命运决定],
   signature: "",
   classification: [],
-  year: [2024],
-  month: [5],
-  day: [21],
+  year: 2024,
+  month: 5,
+  day: 21,
   outline-depth: 3,
   security: [公开],
   abstract-zh: [
